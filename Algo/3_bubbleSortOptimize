@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+void printArray(int[] ,int ,int);
+void bubbleSort(int[]  , int );
+
+int main(){
+    cout<<"Enter Number of element of array"<<endl;
+    int n;
+    cin>>n;
+    int v[n];
+    cout<<"Enter Array Elements"<<endl;
+    // Insert Element in vector
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    bubbleSort(v,n);
+
+    printArray(v,0,n);
+    return 0;
+}
+
+void bubbleSort(int* v, int n ){
+  for(int i=0;i<n;i++){
+    bool flag = false;
+    for(int j=i+1;j<n;j++){
+        if(v[i]>v[j]){
+            int temp = v[i];
+            v[i]=v[j];
+            v[j] = temp;
+            flag = true;
+        }
+        if(!flag){
+            return;
+        }
+    }
+  }
+}
+
+void printArray(int* v,int p, int r){
+    for(int i=p;i<r;i++){
+        cout<< v[i] << " ";
+    }
+}

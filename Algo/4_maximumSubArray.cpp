@@ -10,12 +10,12 @@ int max3(int a,int b,int c){
     return max2(max2(a,b),c);
 }
 
-int maxCrossSection(int* arr,int l,int m,int r){
+int maxCrossSection(int arr[],int l,int m,int r){
 
     int sum =0;
     int left_sum = INT_MIN, right_sum = INT_MIN;
 
-    for(int i=m;i>=l;i++){
+    for(int i=m;i>=l;i--){
         sum += arr[i];
         if(sum>left_sum){
             left_sum=sum;
@@ -24,17 +24,17 @@ int maxCrossSection(int* arr,int l,int m,int r){
 
     sum =0;
 
-    for(int i=m;i<=r;i++){
+    for(int i=m+1;i<=r;i++){
         sum+=arr[i];
         if(sum>right_sum){
             right_sum=sum;
         }
     }
 
-    return max3(left_sum,right_sum,left_sum+right_sum-arr[m]);
+    return max3(left_sum,right_sum,left_sum+right_sum);
 }
 
-int maxSubArray(int* arr, int l, int r){
+int maxSubArray(int arr[], int l, int r){
     if(l>r){
         return INT_MIN;
     }
@@ -43,8 +43,7 @@ int maxSubArray(int* arr, int l, int r){
     }
     int m =(l+r)/2;
 
-
-    return (max3(maxSubArray(arr,l,m-1), maxSubArray(arr,m+1,r),maxCrossSection(arr,l,m,r)));
+    return (max3(maxSubArray(arr,l,m), maxSubArray(arr,m+1,r),maxCrossSection(arr,l,m,r)));
 }
 
 int main(){

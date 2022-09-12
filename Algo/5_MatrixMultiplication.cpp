@@ -32,9 +32,7 @@ int main(){
             int cRes =0;
             for(int k=0;k<n;k++){
                 cRes+=(a[i][k]*b[k][j]);
-
             }
-            cout<<cRes<<endl;
             v.push_back(cRes);
         }
         c.push_back(v);
